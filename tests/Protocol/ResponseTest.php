@@ -2,7 +2,7 @@
 namespace Crunch\FastCGI\Protocol;
 
 use Crunch\FastCGI\ReaderWriter\StringReader;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 /**
  * @coversDefaultClass \Crunch\FastCGI\Protocol\Response

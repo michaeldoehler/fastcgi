@@ -16,7 +16,7 @@ use React\SocketClient\Connector as SocketConnector;
  *
  * @coversNothing
  */
-class IntegrationTest extends \PHPUnit_Framework_TestCase
+class IntegrationTest extends \PHPUnit\Framework\TestCase
 {
     private $fpmExists = true;
 

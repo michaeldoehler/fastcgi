@@ -1,7 +1,7 @@
 <?php
 namespace Crunch\FastCGI\Protocol;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 /**
  * @coversDefaultClass \Crunch\FastCGI\Protocol\Record
@@ -63,11 +63,10 @@ class RecordTest extends TestCase
      * @uses \Crunch\FastCGI\Protocol\Header
      * @uses \Crunch\FastCGI\Protocol\RecordType
      * @param mixed $payload
+     * @expectedException \InvalidArgumentException
      */
     public function testInvalidPayloadTypes($payload)
     {
-        $this->setExpectedException('\InvalidArgumentException');
-
         $header = new Header(RecordType::beginRequest(), 1, 2);
 
         new Record($header, $payload);
@@ -90,11 +89,10 @@ class RecordTest extends TestCase
      * @uses         \Crunch\FastCGI\Protocol\RecordType
      * @param integer $length
      * @param string  $payload
+     * @expectedException \LengthException
      */
     public function testPayloadLengthMismatch($length, $payload)
     {
-        $this->setExpectedException('\LengthException');
-
         $header = new Header(RecordType::beginRequest(), 1, $length);
 
         new Record($header, $payload);

@@ -1,7 +1,7 @@
 <?php
 namespace Crunch\FastCGI\Protocol;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 /**
  * @coversDefaultClass \Crunch\FastCGI\Protocol\RecordType
@@ -107,11 +107,10 @@ class RecordTypeTest extends TestCase
      * @covers ::__construct
      * @dataProvider getInvalidRoles
      * @param int $roleId
+     * @expectedException \InvalidArgumentException
      */
     public function testInvalidRoleIds($roleId)
     {
-        $this->setExpectedException('\InvalidArgumentException');
-
         RecordType::instance($roleId);
     }
 

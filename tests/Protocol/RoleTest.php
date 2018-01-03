@@ -1,7 +1,7 @@
 <?php
 namespace Crunch\FastCGI\Protocol;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 /**
  * @coversDefaultClass \Crunch\FastCGI\Protocol\Role
@@ -58,11 +58,10 @@ class RoleTest extends TestCase
      * @covers ::instance
      * @dataProvider getInvalidRoles
      * @param int $roleId
+     * @expectedException \InvalidArgumentException
      */
     public function testInvalidRoleIds($roleId)
     {
-        $this->setExpectedException('\InvalidArgumentException');
-
         Role::instance($roleId);
     }
 

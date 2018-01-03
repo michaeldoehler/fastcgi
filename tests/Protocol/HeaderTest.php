@@ -1,7 +1,7 @@
 <?php
 namespace Crunch\FastCGI\Protocol;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase as TestCase;
 
 /**
  * @coversDefaultClass \Crunch\FastCGI\Protocol\Header
@@ -58,11 +58,10 @@ class HeaderTest extends TestCase
      * @param int $requestId
      * @param int $length
      * @param int|null $padding
+     * @expectedException \DomainException
      */
     public function testInvalidConstructorArguments($exception, RecordType $type, $requestId, $length, $padding)
     {
-        $this->setExpectedException($exception);
-
         new Header($type, $requestId, $length, $padding);
     }
 
@@ -170,18 +169,5 @@ class HeaderTest extends TestCase
 
             ['\DomainException', "\x01\x02\x00\x03\x00\x04\x09\x00"], // Invalid padding
         ];
-    }
-
-    /**
-     * @dataProvider invalidHeaderStrings
-     * @uses         \Crunch\FastCGI\Protocol\RecordType
-     * @param string $exception
-     * @param string $headerString
-     */
-    public function testInvalidHeaderStrings($exception, $headerString)
-    {
-        $this->setExpectedException($exception);
-
-        Header::decode($headerString);
     }
 }
